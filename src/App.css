@@ -1,38 +1,119 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: Geneva, Verdana, Tahoma, sans-serif;
+  font-size: calc(6px + 0.5vw + 0.5vh);
+  user-select: none;
+}
+
+ul {
+  list-style: none;
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 .App {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+}
+
+header {
+  padding: 1.5rem;
+  font-size: 2rem;
+  font-weight: bold;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* .main {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.side {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 1rem;
+  padding: 1rem;
+} */
+
+.gameboard {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 1rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.Targets div {
+  text-align: center;
+}
+
+.Targets ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  place-items: center;
+}
+
+.Targets li.found {
+  text-decoration: line-through;
+}
+
+.Wimmelbilder {
+  position: relative;
+}
+
+.Wimmelbilder img {
+  width: 100%;
+}
+
+.RightClickMenu {
+  position: absolute;
+  background-color: white;
+  border: solid 0.15rem black;
+}
+
+.RightClickMenu li {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.RightClickMenu li:hover {
+  background-color: lightgrey;
+}
+
+.WinnerPage {
+  position: relative;
+}
+
+.WinnerPage .background {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: url(./resources/wimmelbilder.jpeg);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.WinnerMessage {
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+footer {
+  padding: 0.4rem;
+  width: 100%;
+  text-align: center;
+  font-size: 0.8rem;
 }
