@@ -103,7 +103,6 @@ export default function Game(props) {
   function isCorrect(id, x, y) {
     // ans from database
     const chosenTarget = targets.find(target => target.id === id);
-    console.log(chosenTarget)
     if (x < chosenTarget.ans.x[0] || x > chosenTarget.ans.x[1] || 
         y < chosenTarget.ans.y[0] || y > chosenTarget.ans.y[1]) {
       return false;

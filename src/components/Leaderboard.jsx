@@ -12,13 +12,16 @@ export default function Leaderboard(props) {
 
   return(
     <div className="Leaderboard">
-      <div>
+      <div className="background"></div>
+      <div className="title">
         Leaderboard
       </div>
-      {
-        records.map((record, index) => 
-          <Record key={index} rank={index + 1} name={record.name} score={record.score} />)
-      }
+      <ol>
+        {
+          records.map((record, index) => 
+            <Record key={index} rank={index + 1} name={record.name} score={record.score} />)
+        }
+      </ol>
       <button onClick={start}>
         Start
       </button>
@@ -34,16 +37,16 @@ function Record(props) {
   const score = props.score;
 
   return(
-    <div className="Record">
-      <span>
+    <li className="Record">
+      {/* <span>
         {rank}:
-      </span>
+      </span> */}
       <span>
         {name}
       </span>
       <span>
         ({score})
       </span>
-    </div>
+    </li>
   );
 };
