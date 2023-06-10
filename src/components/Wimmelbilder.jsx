@@ -4,26 +4,34 @@ export default function Wimmelbilder(props) {
 
   const imgPath = process.env.PUBLIC_URL + 'wimmelbilder.jpeg';
 
-  const [isClicked, setIsClicked] = useState(false);
+  const isClicked = props.isClicked;
+  const setClicked = props.setClicked;
   const [pointerX, setPointerX] = useState(0);
   const [pointerY, setPointerY] = useState(0);
   const [ratio, setRatio] = useState(1);
+
+  function showClickMenu(event) {
+    setClicked();
+    setPointerX(event.nativeEvent.offsetX);
+    setPointerY(event.nativeEvent.offsetY);
+    setRatio(event.target.naturalHeight / event.target.height);
+  }
 
   return (
     <div 
       className="Wimmelbilder"
       onContextMenu={(event) => {
         event.preventDefault();
-        setIsClicked(true);
-        setPointerX(event.nativeEvent.offsetX);
-        setPointerY(event.nativeEvent.offsetY);
-        setRatio(event.target.naturalHeight / event.target.height);
+        showClickMenu(event)
       }} 
-      onClick={() => setIsClicked(false)}
+      onClick={(event) => {
+        event.preventDefault();
+        showClickMenu(event)
+      }}
     >
       <img src={imgPath} alt='full of dogs' />
       { isClicked && 
-        <RightClickMenu
+        <ClickMenu
           targetList={props.targetList}  
           pointerX={pointerX} 
           pointerY={pointerY} 
@@ -34,7 +42,7 @@ export default function Wimmelbilder(props) {
   );
 };
 
-function RightClickMenu(props) {
+function ClickMenu(props) {
 
   const targetList = props.targetList;
   const pointerX = props.pointerX;
@@ -43,11 +51,12 @@ function RightClickMenu(props) {
   const handleClickOnMenu = props.handleClickOnMenu;
 
   return(
-    <div className="RightClickMenu" 
+    <div className="ClickMenu" 
       style={{
         top: pointerY, 
         left: pointerX
       }}
+      onClick={(event) => event.stopPropagation()}
       >
       <ul>
         {targetList.map((target) => {
@@ -55,7 +64,7 @@ function RightClickMenu(props) {
             return (
               <li 
                 key={target.id}
-                onClick={() => handleClickOnMenu(target.id, pointerX, pointerY, ratio)}
+                onClick={(event) => handleClickOnMenu(target.id, pointerX, pointerY, ratio, event)}
               >
                   {target.name}
               </li>

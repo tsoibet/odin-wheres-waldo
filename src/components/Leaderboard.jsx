@@ -8,6 +8,8 @@ export default function Leaderboard(props) {
     score: 1
   }];
 
+  const start = props.start;
+
   return(
     <div className="Leaderboard">
       <div>
@@ -17,6 +19,10 @@ export default function Leaderboard(props) {
         records.map((record, index) => 
           <Record key={index} rank={index + 1} name={record.name} score={record.score} />)
       }
+      <button onClick={start}>
+        Start
+      </button>
+
     </div>
   );
 };

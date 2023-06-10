@@ -1,28 +1,18 @@
-import { useStopwatch } from 'react-timer-hook';
-
 export default function Stopwatch(props) {
 
-  const {
-    seconds,
-    minutes,
-    hours,
-    days,
-    isRunning,
-    start,
-    pause,
-    reset,
-  } = useStopwatch({ autoStart: false });
+  const isRunning = props.isRunning;
+  const time = props.time;
 
+  const ms = (Math.floor(time / 10) % 100).toString().padStart(2, '0');
+  const seconds = (Math.floor(time / 1000) % 60).toString().padStart(2, '0');
+  const minutes = (Math.floor(time / 60000) % 60).toString().padStart(2, '0');
+  const hours = (Math.floor(time / 3600000)).toString().padStart(2, '0');
 
   return (
-    <div>
+    <div className="Stopwatch">
       <div>
-        <span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
+        <span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>.<span>{ms}</span>
       </div>
-      <p>{isRunning ? 'Running' : 'Not running'}</p>
-      <button onClick={start}>Start</button>
-      <button onClick={pause}>Pause</button>
-      <button onClick={reset}>Reset</button>
     </div>
   );
 };

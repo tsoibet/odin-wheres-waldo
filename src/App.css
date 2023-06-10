@@ -11,12 +11,6 @@ ul {
   list-style: none;
 }
 
-h1 {
-  font-size: 3rem;
-  text-align: center;
-  text-transform: uppercase;
-}
-
 .App {
   min-height: 100vh;
   display: grid;
@@ -31,21 +25,16 @@ header {
   text-align: center;
 }
 
-/* .main {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 1rem;
-}
-
-.side {
+.Game {
   display: grid;
   grid-template-rows: auto 1fr;
   gap: 1rem;
-  padding: 1rem;
-} */
+  place-items: center;
+}
 
 .gameboard {
   height: 100%;
+  width: 100%;
   display: grid;
   grid-template-rows: auto 1fr;
   gap: 1rem;
@@ -73,18 +62,18 @@ header {
   width: 100%;
 }
 
-.RightClickMenu {
+.ClickMenu {
   position: absolute;
   background-color: white;
   border: solid 0.15rem black;
 }
 
-.RightClickMenu li {
+.ClickMenu li {
   padding: 0.5rem 1rem;
   cursor: pointer;
 }
 
-.RightClickMenu li:hover {
+.ClickMenu li:hover {
   background-color: lightgrey;
 }
 
@@ -109,6 +98,16 @@ header {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+}
+
+.WinnerMessage h1 {
+  font-size: 3rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.WinnerMessage div, .WinnerMessage span {
+  font-size: 1.2rem;
 }
 
 footer {
