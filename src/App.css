@@ -11,6 +11,15 @@ ul {
   list-style: none;
 }
 
+input {
+  padding: 0.2rem 0.4rem;
+}
+
+button {
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+}
+
 .App {
   min-height: 100vh;
   display: grid;
@@ -127,6 +136,30 @@ header {
 
 .WinnerMessage div, .WinnerMessage span {
   font-size: 1.2rem;
+}
+
+.WinnerMessage span .number {
+  font-size: 2rem;
+}
+
+.WinnerPage .addRecord {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+input#name {
+  width: 15rem;
+}
+
+button[name="addRecord"] {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+button[name="skipRecord"] {
+  font-size: 0.9rem;
 }
 
 footer {
