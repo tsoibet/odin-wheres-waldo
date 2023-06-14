@@ -55,13 +55,28 @@ header {
 }
 
 .Leaderboard .title {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
 }
 
 .Leaderboard ol {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+.Leaderboard li {
+  display: grid;
+  grid-template-columns: 1fr 4fr 2fr 2fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.Leaderboard li span:first-child {
+  justify-self: end;
+}
+
+.Leaderboard .number, .Leaderboard .name {
+  font-size: 1.2rem;
 }
 
 .Game {
