@@ -48,7 +48,7 @@ export default function WinnerPage(props) {
         </div>
         <div className="addRecord">
           <label htmlFor="name">
-            Leave your name on our leaderboard:
+            Leave your name on our record:
           </label>
           <input id="name" type="text" maxLength={20} autoComplete="off" placeholder="Anonymous Player" value={playerInputName} onChange={handleInputChange}>
           </input>

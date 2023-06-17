@@ -16,6 +16,8 @@ input {
 }
 
 button {
+  border: solid 0.15rem black;
+  background-color: white;
   padding: 0.3rem 0.6rem;
   cursor: pointer;
 }
@@ -36,11 +38,11 @@ header {
 
 .Leaderboard {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  justify-content: space-evenly;
-  align-items: center;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 5rem;
+  place-items: center;
 }
 
 .background {
@@ -54,29 +56,79 @@ header {
   z-index: -1;
 }
 
+.Leaderboard button {
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  margin-bottom: 2rem;
+  align-self: end;
+}
+
+.Leaderboard .board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid 0.15rem black;
+  background-color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 1rem;
+}
+
 .Leaderboard .title {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  padding: 0.5rem;
 }
 
 .Leaderboard ol {
+  height: 25vh;
+  overflow-y: scroll;
+  border-top: solid 0.1rem lightgrey;
+  padding: 0.2rem 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
 }
 
 .Leaderboard li {
   display: grid;
-  grid-template-columns: 1fr 4fr 2fr 2fr;
+  grid-template-columns: auto 1fr auto auto;
   gap: 3rem;
   align-items: center;
+  padding: 0.4rem 0.8rem;
+  border-bottom: dotted 0.1rem lightgrey;
 }
 
-.Leaderboard li span:first-child {
-  justify-self: end;
+.Leaderboard li:last-child {
+  border-bottom: none;
 }
 
-.Leaderboard .number, .Leaderboard .name {
-  font-size: 1.2rem;
+.Leaderboard li>span:first-child {
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+  line-height: 2rem;
+}
+
+.Leaderboard li:first-child>span:first-child, 
+.Leaderboard li:nth-child(2)>span:first-child, 
+.Leaderboard li:nth-child(3)>span:first-child {
+  border-radius: 2rem;
+  font-weight: bold;
+}
+
+.Leaderboard li:first-child>span:first-child {
+  background-color: rgb(212, 175, 55);
+}
+
+.Leaderboard li:nth-child(2)>span:first-child {
+  background-color: rgb(211, 211, 211);
+}
+
+.Leaderboard li:nth-child(3)>span:first-child {
+  background-color: rgb(205, 127, 50);
+}
+
+.Leaderboard .date {
+  font-size: 0.6rem;
+  font-style: italic;
+  align-self: end;
 }
 
 .Game {
@@ -175,6 +227,7 @@ button[name="addRecord"] {
 
 button[name="skipRecord"] {
   font-size: 0.9rem;
+  border: solid 0.1rem black;
 }
 
 footer {

@@ -12,7 +12,7 @@ export default function Leaderboard(props) {
   useEffect(() => {
     async function getRecords() {
       try {
-        const q = query(collection(db, "records"), orderBy("score"), limit(10) )
+        const q = query(collection(db, "records"), orderBy("score"), limit(10));
         const querySnapshot = await getDocs(q);
         const temp = querySnapshot.docs.map((record) => record.data());
         setRecords(temp);
@@ -28,18 +28,20 @@ export default function Leaderboard(props) {
   return(
     <div className="Leaderboard">
       <div className="background"></div>
-      <div className="title">
-        Leaderboard
-      </div>
-      <ol>
+      <button onClick={start}>
+        Start
+      </button>
+      <div className="board">
+        <div className="title">
+          Leaderboard
+        </div>
+        <ol>
         {
           records.map((record, index) => 
             <Record key={index} rank={index + 1} name={record.name} score={record.score} timestamp={record.timestamp} />)
         }
-      </ol>
-      <button onClick={start}>
-        Start
-      </button>
+        </ol>
+      </div>
     </div>
   );
 };
@@ -69,13 +71,13 @@ function Record(props) {
       <span className="name">
         {name}
       </span>
-      <span>
-        { hours > 0 && <span> <span className="number"> {hours}</span>h </span> }
-        { minutes > 0 && <span> <span className="number"> {minutes}</span>m </span> }
-        <span> <span className="number"> {seconds}.{ms}</span>s </span>
+      <span className="number">
+        { hours > 0 && `${hours}h` }
+        { minutes > 0 && `${minutes}m` }
+        {seconds}.{ms}s 
       </span>
-      <span>
-        ({timestamp})
+      <span className="date">
+        {timestamp}
       </span>
     </li>
   );
