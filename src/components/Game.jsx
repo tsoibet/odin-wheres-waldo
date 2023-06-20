@@ -1,6 +1,7 @@
 
 import Stopwatch from './Stopwatch'
 import Targets from './Targets';
+import ToastNotification from './ToastNotification';
 import Wimmelbilder from './Wimmelbilder';
 import WinnerPage from './WinnerPage';
 import { useEffect, useState } from "react";
@@ -69,6 +70,16 @@ export default function Game(props) {
   const [targetList, setTargetList] = useState(targets);
 
   useEffect(() => {
+
+    function isAllFound() {
+      for (let target of targetList) {
+        if (!target.isFound) {
+          return false;
+        }
+      }
+      return true;
+    }
+
     if(isAllFound()) {
       pauseStopwatch();
       setIsEnd(true);
@@ -96,7 +107,10 @@ export default function Game(props) {
           break;
         }
       }
+      updateToast("correct");
       setTargetList(newTargetList);
+    } else {
+      updateToast("wrong");
     }
   };
 
@@ -110,17 +124,40 @@ export default function Game(props) {
     return true;
   }
 
-  function isAllFound() {
-    for (let target of targetList) {
-      if (!target.isFound) {
-        return false;
-      }
+  const [toast, setToast] = useState();
+  const [id, setId] = useState(0);
+
+  function updateToast (type) {
+    if (type === "correct") {
+      setToast({
+        id: id,
+        type: type,
+        message: "Good one!"
+      });
+    } else if (type === "wrong") {
+      setToast({
+        id: id,
+        type: type,
+        message: "No, that's not it."
+      });
     }
-    return true;
+    setId((id) => id + 1);
   }
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setToast(null);
+    }, 1000);
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [toast]);
 
   return (
     <div className='Game'>
+      { toast &&
+        <ToastNotification toast={toast} />
+      }
       <Stopwatch isRunning={isRunning} time={time} />
       <div className='gameboard'>
         <Targets targetList={targetList}/>
