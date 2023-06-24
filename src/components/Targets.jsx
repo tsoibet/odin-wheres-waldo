@@ -1,5 +1,3 @@
-import mark from './../resources/found.svg'
-
 export default function Targets(props) {
 
   const targetList = props.targetList;

@@ -1,6 +1,5 @@
 export default function Stopwatch(props) {
 
-  const isRunning = props.isRunning;
   const time = props.time;
 
   const ms = (Math.floor(time / 10) % 100).toString().padStart(2, '0');
