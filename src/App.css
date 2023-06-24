@@ -131,6 +131,10 @@ header {
   align-self: end;
 }
 
+.Leaderboard .noRecord {
+  padding: 1rem;
+}
+
 .Game {
   position: relative;
   display: grid;

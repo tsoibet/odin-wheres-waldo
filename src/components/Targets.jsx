@@ -13,7 +13,7 @@ export default function Targets(props) {
             <li key={target.id}>
               <div className={`target${target.id}`}>
                 { target.isFound && 
-                <span class="material-icons-outlined outlined found">
+                <span className="material-icons-outlined outlined found">
                   check_circle
                 </span> }
               </div>

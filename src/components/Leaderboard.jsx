@@ -35,12 +35,18 @@ export default function Leaderboard(props) {
         <div className="title">
           Leaderboard
         </div>
+        { records.length ? 
         <ol>
-        {
-          records.map((record, index) => 
-            <Record key={index} rank={index + 1} name={record.name} score={record.score} timestamp={record.timestamp} />)
-        }
+          {
+            records.map((record, index) => 
+              <Record key={index} rank={index + 1} name={record.name} score={record.score} timestamp={record.timestamp} />)
+          }
         </ol>
+        :
+        <div className="noRecord">
+          No record yet. Start playing now and leave your record here!
+        </div>
+        }
       </div>
     </div>
   );
