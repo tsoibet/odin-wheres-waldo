@@ -4,6 +4,7 @@ import Targets from './Targets';
 import ToastNotification from './ToastNotification';
 import Wimmelbilder from './Wimmelbilder';
 import WinnerPage from './WinnerPage';
+import getTargets from './data';
 import { useEffect, useState } from "react";
 
 export default function Game(props) {
@@ -34,35 +35,8 @@ export default function Game(props) {
   }
   //
 
-  const targets = [
-    {
-      id: 1,
-      name: "Nora",
-      ans: {
-        x: [2400, 2750], 
-        y: [1700, 2200]
-      }
-    },
-    {
-      id: 2,
-      name: "Doge",
-      ans: {
-        x: [1130, 1430],
-        y: [3010, 3400]
-      }
-    },
-    {
-      id: 3,
-      name: "Capybara",
-      ans: {
-        x: [1750, 2060],
-        y: [680, 880]
-      }
-    }
-  ];
+  const targets = getTargets();
 
-  // const targets = [...props.targets];
-  // retrieve targets from database
   targets.forEach((target) => {
     target.isFound = false;
   });
@@ -70,7 +44,6 @@ export default function Game(props) {
   const [targetList, setTargetList] = useState(targets);
 
   useEffect(() => {
-
     function isAllFound() {
       for (let target of targetList) {
         if (!target.isFound) {
@@ -79,7 +52,6 @@ export default function Game(props) {
       }
       return true;
     }
-
     if(isAllFound()) {
       pauseStopwatch();
       setIsEnd(true);
@@ -115,7 +87,6 @@ export default function Game(props) {
   };
 
   function isCorrect(id, x, y) {
-    // ans from database
     const chosenTarget = targets.find(target => target.id === id);
     if (x < chosenTarget.ans.x[0] || x > chosenTarget.ans.x[1] || 
         y < chosenTarget.ans.y[0] || y > chosenTarget.ans.y[1]) {

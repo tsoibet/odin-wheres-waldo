@@ -1,3 +1,5 @@
+import mark from './../resources/found.svg'
+
 export default function Targets(props) {
 
   const targetList = props.targetList;
@@ -5,13 +7,19 @@ export default function Targets(props) {
   return (
     <div className="Targets">
       <div>
-        Find...
+        WANTED
       </div>
       <ul>
         {
           targetList.map(target =>
-            <li key={target.id} className={target.isFound ? 'found' : ''}>
-              {target.name}
+            <li key={target.id}>
+              <div className={`target${target.id}`}>
+                { target.isFound && 
+                <span class="material-icons-outlined outlined found">
+                  check_circle
+                </span> }
+              </div>
+              <div>{target.name}</div>
             </li>)
         }
       </ul>

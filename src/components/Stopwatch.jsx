@@ -10,6 +10,9 @@ export default function Stopwatch(props) {
 
   return (
     <div className="Stopwatch">
+      <span class="material-icons-outlined">
+        timer
+      </span>
       <div>
         <span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>.<span>{ms}</span>
       </div>

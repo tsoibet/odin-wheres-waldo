@@ -161,6 +161,14 @@ header {
   background-color: rgb(255, 45, 45);
 }
 
+
+.Stopwatch {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.3rem;
+  place-items: center;
+}
+
 .gameboard {
   height: 100%;
   width: 100%;
@@ -169,18 +177,70 @@ header {
   gap: 1rem;
 }
 
-.Targets div {
+.Targets {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  margin: 0 1rem;
+  border: solid 0.15rem rgb(55, 55, 55);
   text-align: center;
+  background-color: rgb(215, 215, 215);
 }
 
 .Targets ul {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+  gap: 0.2rem;
   place-items: center;
 }
 
-.Targets li.found {
-  text-decoration: line-through;
+.Targets li {
+  border: solid 0.15rem black;
+  background-color: white;
+}
+
+.Targets li div:first-child {
+  width: 6rem;
+  height: 6rem;
+  background-position: center;
+  background-size: cover;
+  display: grid;
+  place-items: center;
+}
+
+.Targets li .target1 {
+  background-image: url('./resources/target1.jpeg');
+}
+
+.Targets li .target2 {
+  background-image: url('./resources/target2.jpeg');
+}
+
+.Targets li .target3 {
+  background-image: url('./resources/target3.jpeg');
+}
+
+.Targets li .target4 {
+  background-image: url('./resources/target4.jpeg');
+}
+
+.Targets li .target5 {
+  background-image: url('./resources/target5.jpeg');
+}
+
+.Targets li .target6 {
+  background-image: url('./resources/target6.jpeg');
+}
+
+.Targets li div:last-child {
+  font-size: 0.8rem;
+  padding: 0.15rem;
+}
+
+.Targets .found {
+  font-size: 5rem;
+  color: rgb(50, 200, 50);
 }
 
 .Wimmelbilder {
@@ -189,6 +249,7 @@ header {
 
 .Wimmelbilder img {
   width: 100%;
+  cursor: crosshair;
 }
 
 .ClickMenu {
